@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Автошкола Пилот-М {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/glyphicon.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="logo"></div>
+
+        <div class="menu">
+            <div class="menu-item">Главная</div>
+            <div class="menu-item">Новости</div>
+            <div class="menu-item">Об атошколе</div>
+            <div class="menu-item">Записаться</div>
+            <div class="menu-item">Для учащихся</div>
+        </div>
+
+        <div style="height: 200px"></div>
+        <div class="blue-line">
+            <div class="content">
+                <h1>Автошкола ООО “Пилот-М”</h1>
+                <h2>в центре города станция метро пл. Тукая</h2>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
