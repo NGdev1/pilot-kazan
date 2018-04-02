@@ -99,7 +99,7 @@ body {
 }
 
 .menu{
-    float: right;
+
 }
 
 .menu-item{
@@ -120,26 +120,38 @@ body {
 }
 
 h1{
-    margin-top: -5px;
-    font-size: 36px;
-    font-weight: 300;
-    color: #FFFFFF;
+
 }
 
 h2 {
-    margin-top: -20px;
-    font-size: 24px;
-    font-weight: 300;
-    color: #FFFFFF;
+
 }
 
 .blue-line{
     height: 131px;
 
-    position: absolute;
-    left: 0;
-    top: 160px;
     width: 100%;
 
     background: linear-gradient(90.73deg, #4A6491 0.07%, #6A7FA3 99.92%);
+}
+
+.blue-line-title {
+    margin-top: -5px;
+    font-size: 36px;
+    font-weight: 300;
+    color: #FFFFFF;
+    float: left;
+}
+
+.blue-line-subtitle{
+    font-size: 24px;
+    font-weight: 300;
+    color: #FFFFFF;
+    float: left;
+}
+
+.blue-line-right-info {
+    font-size: 24px;
+    font-weight: 300;
+    color: #FFFFFF;
 }
