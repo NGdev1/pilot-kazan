@@ -1,89 +1,137 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Автошкола Пилот-М {% endblock %}
+{% block title %}Автошкола Пилот-М{% endblock %}
 
 {% block stylesheets %}
     <link href="{{ asset('css/glyphicon.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/site/style.css') }}" rel="stylesheet" media="screen">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/loading.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/jquery-ui.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/jquery-ui.structure.min.css') }}" rel="stylesheet" media="screen">
+    <link href="{{ asset('css/jquery-ui.theme.min.css') }}" rel="stylesheet" media="screen">
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
 
+    <script type="text/javascript">
+
+        var contentContainer;
+        var loadingIndicator;
+
+        $(document).ready(function () {
+            contentContainer = $('#content');
+            loadingIndicator = $('#circleG');
+
+            loadingIndicator.hide();
+        });
+
+        function loadContent(url, title, addToHistory) {
+            if (url != undefined && contentContainer != undefined) {
+
+                loadingIndicator.show();
+                contentContainer.hide();
+
+                $.ajax({
+                    url: url,
+                    type: "GET"
+                }).done(function (data) {
+                    document.title = title;
+
+                    loadingIndicator.hide();
+
+                    contentContainer.fadeTo(200, 1);
+                    contentContainer.html(data);
+
+                    if (addToHistory) {
+                        window.history.pushState({"html": data, "pageTitle": title}, title, url);
+                    }
+                });
+            }
+        }
+
+        function showDialog(title, message) {
+            var dialogMessage = $("<div/>");
+            var messageContainer = $('<p/>', {
+                html: message
+            });
+            dialogMessage.append(messageContainer);
+
+            dialogMessage.dialog({
+                title: title,
+                modal: true,
+                buttons: {
+                    "Закрыть": function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        }
+
+    </script>
 {% endblock %}
 
 {% block body %}
 
-    <div class="content">
-        <div class="logo"></div>
+    <div class="content" style="margin-bottom: 20px">
+        <div class="clearfix">
+            <div class="logo-space"></div>
+            <div class="header">
+                <div class="logo"></div>
+            </div>
 
-        <div class="menu">
-            <div class="menu-item">Главная</div>
-            <div class="menu-item">Новости</div>
-            <div class="menu-item">Об атошколе</div>
-            <div class="menu-item">Записаться</div>
-            <div class="menu-item">Для учащихся</div>
+            <ul class="menu">
+                <li class="menu-item"><a onclick="loadContent('{{ path('site_index') }}', 'Автошкола Пилот-М', true)">Главная</a></li>
+                <li class="menu-item"><a onclick="loadContent('/news', 'Новости', true)">Новости</a></li>
+                <li class="menu-item"><a>Об атошколе</a></li>
+                <li class="menu-item"><a>Записаться</a></li>
+                <li class="menu-item"><a onclick="loadContent('{{ path('site_for_students') }}', 'Для учащихся', true)">Для учащихся</a></li>
+            </ul>
         </div>
+    </div>
 
-        <div class="blue-line">
-                <div class="blue-line-title">Автошкола ООО “Пилот-М”</div>
-                <div class="blue-line-subtitle">в центре города станция метро пл. Тукая</div>
-                <div class="blue-line-right-info">sdgf dfg dfg dfg dfg</div>
-                <div class="blue-line-right-info">sdgf dfg dfg dfg dfg</div>
+    <div class="blue-line">
+        <div class="content clearfix">
+            <table style="width: 100%">
+                <tr>
+                    <td>
+                        <h1 class="blue-line-title">Автошкола ООО “Пилот-М”</h1></td>
+                    <td>
+                        <div class="blue-line-right-info">ул.Бутлерова дом 30</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="blue-line-subtitle">в центре города станция метро пл. Тукая</div>
+                    </td>
+                    <td>
+                        <div class="blue-line-right-info">ул.Профсоюзная дом 40-42</div>
+                    </td>
+                <tr>
+            </table>
         </div>
-        <div>Контактная информация</div>
-        <p>г. Казань,
-            ул, Бутлерова,
-            дом 30
-            тел: +7(843) 267-58-08
-            тел: +7 (927)-400-06-65
-            г. Казань,
-            ул. Профсоюзная,
-            дом 40-42
-            тел: +7(843) 214-34-14
-            тел: +7 (927)-400-06-64
-        </p>
+    </div>
 
-        <div>Даты набора</div>
-        <p>21 марта
-            ОБУЧЕНИЕ
-            УТРОМ С 10:00-12:30
-            ДНЕМ   С 13:00-15:30
-            ВЕЧЕРОМ С 18:15- 21:00
-            ИЛИ ПО ВАШЕМУ ИНДИВИДУАЛЬНОМУ РАСПИСАНИЮ
-        </p>
+    <div id="circleG" style="margin-top: 75px">
+        <div class="title center" style="color: #575757">Загрузка</div>
+        <div id="circleG_1" class="circleG"></div>
+        <div id="circleG_2" class="circleG"></div>
+        <div id="circleG_3" class="circleG"></div>
+    </div>
 
-        <p>29 марта
-            ОБУЧЕНИЕ
-            УТРОМ С 11:00-13:30
-            ДНЕМ С 14:00-16:30
-            ВЕЧЕРОМ С 18:15- 21:00
-            ИЛИ ПО ВАШЕМУ
-            ИНДИВИДУАЛЬНОМУ
-            РАСПИСАНИЮ
-        </p>
+    <div id="content">
 
-        <p>3 апреля
-            ОБУЧЕНИЕ
-            УТРОМ С 12:00-14:30
-            ДНЕМ С 15:00-17:30
-            ВЕЧЕРОМ С 18:15- 21:00
-            ИЛИ ПО ВАШЕМУ
-            ИНДИВИДУАЛЬНОМУ
-            РАСПИСАНИЮ
-        </p>
-        <div>Подать заявку</div>
-        <div>Отзывы и предложения</div>
-        <p> Алия.
-            Ура! Я автоледи! думала и 4 мес это долго и как я все выучу!? Легко! Начинала обучаться на Бутлерова, но поменялся график работы и мне тут же предложили варианты, перевели на Профсоюзную 40. Преподаватели оч внимательные, профессионалы, с таким теплом относятся к ученикам, так удачно подбирают инструктора! У меня был  Радик! у него железные нервы и терпение!!!  Всему коллективу благодарна за свое водительское удостоверение!
-        </p>
-        <p> Рамиля.  Я обучалась на Профсоюзной 40-42 , преподаватель Жанна Михайловна, все отлично, так легко и доступно поясняли пдд, запомнилось все без усилий, оч требовательно принимает экзамен, в ГАИ уже не страшно... Инструктор Андрей Владимирович оч обязательный человек, приучал к ответственности и аккуратности на дороге. экзамен сдан с первого раза! замечательная
-            а/ школа, отличный современный класс, чистая машина. Приходите учиться, не пожалеете.
-        </p>
-        <p> Михаил.
-            Огромное спасибо автошколе, преподавателю теории Ильшату Габдулшакуровичу,  первая помощь при дтп оч интересно  и познавательно, инструктору Фаниту за отличные знания и навыки в управлении автомобилем, пдд. Сдал экзамены с первого раза! Рекомендую.
-        </p>
+        {% if content == 'main' %}
 
+            {% include 'site/main.html.twig' %}
 
+        {% elseif content == 'for-students' %}
+
+            {% include 'site/for_students.html.twig' %}
+
+        {% endif %}
 
     </div>
 

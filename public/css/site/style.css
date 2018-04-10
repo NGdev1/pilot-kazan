@@ -1,0 +1,169 @@
+body {
+    font-weight: 300;
+    font-family: "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0.5px;
+    height: 100%; position: absolute; padding: 0; margin: 0; width: 100%;
+}
+
+@media (max-width: 1240px) {
+    .logo{
+        margin: 0 auto !important;
+        clear: both;
+        float: none !important;
+    }
+
+    .menu {
+        margin-top: 20px !important;
+        float: none !important;
+    }
+
+    .menu-item {
+        margin: 0 50px 0 0 !important;
+    }
+
+    .menu a{
+        line-height: 70px !important;
+    }
+
+    .blue-line-right-info {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    .menu {
+        display: none;
+    }
+
+    .logo{
+        width: 90px !important;
+        height: 90px !important;
+        margin: 20px auto 20px auto !important;
+    }
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(255, 255, 255, 0.7);
+        width: 100%;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    .logo-space {
+        height: 80px;
+    }
+}
+
+.logo{
+    background: url("../../images/Logo.png");
+    background-size: 100%;
+
+    float: left;
+    margin-right: 20px;
+    width: 107px;
+    height: 107px;
+}
+
+.menu{
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item{
+    list-style: none;
+    display: inline;
+}
+
+.menu-item + .menu-item {
+    margin-left: 60px;
+}
+
+.menu a{
+    height: 107px;
+    line-height: 107px;
+
+    text-align: right;
+    background: none;
+    border: none;
+    white-space: nowrap;
+    font-size: 22px;
+    color: #0F0E0E;
+}
+
+.content{
+    margin: 28px auto;
+    width: 80%;
+    max-width: 1024px;
+}
+
+.clearfix:after {
+    content: "."; /* добавить содержимое: "." */
+    display: block;  /* сделать блоком, т.к. inline не может иметь clear */
+    clear: both;  /* с обеих сторон clear */
+    visibility: hidden; /* сделать невидимым, зачем нам точка внизу? */
+    height: 0;  /* сделать высоту 0, чтобы не занимал место */
+}
+
+h1{
+    font-size: 44px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 44px;
+    font-weight: normal;
+    margin: 70px 0 0 0;
+}
+
+a {
+    cursor: pointer;
+}
+
+.info-box {
+    font-size: 21px;
+    width: 300px;
+    margin-right: 33px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.feedback-item{
+    margin-top: 28px;
+    font-size: 18px;
+}
+
+.blue-line{
+    padding: 20px 0;
+
+    width: 100%;
+
+    background: linear-gradient(90.73deg, #4A6491 0.07%, #6A7FA3 99.92%);
+    background-size: 100%;
+}
+
+.blue-line-title {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #FFFFFF;
+}
+
+.blue-line-subtitle{
+    font-size: 24px;
+    font-weight: 300;
+    color: #FFFFFF;
+    display: block;
+}
+
+.blue-line-right-info {
+    font-size: 24px;
+    font-weight: 300;
+    color: #FFFFFF;
+    float: right;
+}
