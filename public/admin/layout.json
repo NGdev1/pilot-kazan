@@ -1,0 +1,25 @@
+{
+   "title": "Панель администратора",
+   "rightButton": "logout",
+   "leftButton": "site",
+   "url": "/admin",
+   "hasContent": false,
+   "menu": [
+      {
+         "title": "Заявки",
+         "rightButton": "add",
+         "leftButton": "back",
+         "url": "/admin/boards/applications",
+         "hasContent": false,
+         "menu" : [
+            {
+               "title": "Добавить заявку",
+               "rightButton": "logout",
+               "leftButton": "back",
+               "url": "/admin/boards/applications/add",
+               "hasContent": false
+            }
+         ]
+      }
+   ]
+}
