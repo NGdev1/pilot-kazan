@@ -30,17 +30,97 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/for-students", name="site_for_students")
+     * @Route("/events", name="site_events")
      */
-    public function showForStudentsAction(Request $request)
+    public function showEventsAction(Request $request)
     {
         if ($request->isXmlHttpRequest()) {
             return $this->render(
-                'site/for_students.html.twig'
+                'site/events.html.twig'
             );
         } else {
             return $this->siteRenderFullView([
-                'content' => 'for-students'
+                'content' => 'events'
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/theory-and-practice", name="site_theory_and_practice")
+     */
+    public function showTheotyAndPracticeAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                'site/theory_and_practice.html.twig'
+            );
+        } else {
+            return $this->siteRenderFullView([
+                'content' => 'theory-and-practice'
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/resources", name="site_resources_for_students")
+     */
+    public function showResourcesAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                'site/resources_for_students.html.twig'
+            );
+        } else {
+            return $this->siteRenderFullView([
+                'content' => 'resources'
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/enroll", name="site_enroll")
+     */
+    public function showEnrollAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                'site/enroll.html.twig'
+            );
+        } else {
+            return $this->siteRenderFullView([
+                'content' => 'enroll'
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/about", name="site_about")
+     */
+    public function showAboutAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                'site/about.html.twig'
+            );
+        } else {
+            return $this->siteRenderFullView([
+                'content' => 'about'
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/info", name="site_info")
+     */
+    public function showInfoAction(Request $request)
+    {
+        if ($request->isXmlHttpRequest()) {
+            return $this->render(
+                'site/info.html.twig'
+            );
+        } else {
+            return $this->siteRenderFullView([
+                'content' => 'info'
             ]);
         }
     }

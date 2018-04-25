@@ -25,7 +25,18 @@
             contentContainer = $('#content');
             loadingIndicator = $('#circleG');
 
-            loadingIndicator.hide();
+            setSelected('{{ content }}');
+
+            $('.menu-item-dropdown').on('click', function () {
+                var dropdownMenu = $(this).find('.dropdown-menu');
+                if (dropdownMenu.is(":visible")) {
+                    dropdownMenu.hide();
+                } else {
+                    dropdownMenu.show();
+                    dropdownMenu.css('left', this.offsetLeft + 'px');
+                    dropdownMenu.css('top', this.offsetTop + 25 + 'px');
+                }
+            });
         });
 
         function loadContent(url, title, addToHistory) {
@@ -70,6 +81,59 @@
             });
         }
 
+        var isMenuOpened = false;
+        function changeMenuSatate() {
+            isMenuOpened = !isMenuOpened;
+            if (isMenuOpened) {
+                $('.menu').fadeIn(150)
+            } else {
+                $('.menu').fadeOut(150)
+            }
+        }
+
+        function setSelected(selected) {
+            $('.selected').removeClass('selected');
+            $('#' + selected).addClass('selected', 100);
+        }
+
+        //site pages loading functions
+        function loadMainPage() {
+            loadContent('{{ path('site_index') }}', 'Автошкола Пилот-М', true);
+            setSelected('main');
+
+        }
+
+        function loadEventsPage() {
+            loadContent('{{ path('site_events') }}', 'Даты мероприятий', true);
+            setSelected('events');
+        }
+
+        function loadTheoryAndPracticePage() {
+            loadContent('{{ path('site_theory_and_practice') }}', 'Теория и практика', true);
+            setSelected('theory-and-practice');
+        }
+
+        function loadResourcesPage() {
+            loadContent('{{ path('site_resources_for_students') }}', 'Ресурсы', true);
+            setSelected('resources');
+        }
+
+
+        function loadEnrollPage() {
+            loadContent('{{ path('site_enroll') }}', 'Запись', true);
+            setSelected('enroll');
+        }
+
+        function loadAboutPage() {
+            loadContent('{{ path('site_about') }}', 'О нас', true);
+            setSelected('about');
+        }
+
+        function loadInfoPage() {
+            loadContent('{{ path('site_info') }}', 'Сведения', true);
+            setSelected('info');
+        }
+
     </script>
 {% endblock %}
 
@@ -79,15 +143,33 @@
         <div class="clearfix">
             <div class="logo-space"></div>
             <div class="header">
+                <div style="height: 0;">
+                    <div class="menu-icon" onclick="changeMenuSatate()"></div>
+                </div>
                 <div class="logo"></div>
             </div>
 
-            <ul class="menu">
-                <li class="menu-item"><a onclick="loadContent('{{ path('site_index') }}', 'Автошкола Пилот-М', true)">Главная</a></li>
-                <li class="menu-item"><a onclick="loadContent('/news', 'Новости', true)">Новости</a></li>
-                <li class="menu-item"><a>Об атошколе</a></li>
-                <li class="menu-item"><a>Записаться</a></li>
-                <li class="menu-item"><a onclick="loadContent('{{ path('site_for_students') }}', 'Для учащихся', true)">Для учащихся</a></li>
+            <ul class="menu noselect">
+                <li class="menu-item">
+                    <a id="main" onclick="loadMainPage()">Главная</a>
+                </li>
+                <li class="menu-item menu-item-dropdown">
+                    <a id="for-students">Для учащихся</a>
+                    <div class="dropdown-menu">
+                        <a id="events" class="dropdown-item" onclick="loadEventsPage()">Даты мероприятий</a>
+                        <a id="theory-and-practice" class="dropdown-item" onclick="loadTheoryAndPracticePage()">Теория и практика</a>
+                        <a id="resources" class="dropdown-item" onclick="loadResourcesPage()">Ресурсы</a>
+                    </div>
+                </li>
+                <li class="menu-item">
+                    <a id="enroll" onclick="loadEnrollPage()">Записаться</a>
+                </li>
+                <li class="menu-item">
+                    <a id="about" onclick="loadAboutPage()">Об атошколе</a>
+                </li>
+                <li class="menu-item">
+                    <a id="info" onclick="loadInfoPage()">Сведения</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -114,8 +196,8 @@
         </div>
     </div>
 
-    <div id="circleG" style="margin-top: 75px">
-        <div class="title center" style="color: #575757">Загрузка</div>
+    <div id="circleG" style="margin-top: 75px; display: none;">
+        <div class="title center" style="color: #575757;">Загрузка</div>
         <div id="circleG_1" class="circleG"></div>
         <div id="circleG_2" class="circleG"></div>
         <div id="circleG_3" class="circleG"></div>
@@ -127,9 +209,29 @@
 
             {% include 'site/main.html.twig' %}
 
-        {% elseif content == 'for-students' %}
+        {% elseif content == 'events' %}
 
-            {% include 'site/for_students.html.twig' %}
+            {% include 'site/events.html.twig' %}
+
+        {% elseif content == 'theory-and-practice' %}
+
+            {% include 'site/theory_and_practice.html.twig' %}
+
+        {% elseif content == 'resources' %}
+
+            {% include 'site/resources_for_students.html.twig' %}
+
+        {% elseif content == 'enroll' %}
+
+            {% include 'site/enroll.html.twig' %}
+
+        {% elseif content == 'about' %}
+
+            {% include 'site/about.html.twig' %}
+
+        {% elseif content == 'info' %}
+
+            {% include 'site/info.html.twig' %}
 
         {% endif %}
 
