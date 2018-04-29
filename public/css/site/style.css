@@ -172,16 +172,22 @@ body {
 h1{
     font-size: 44px;
     font-weight: bold;
+    margin: 60px auto;
+    text-align: center;
 }
 
 h2 {
     font-size: 44px;
     font-weight: normal;
-    margin: 70px 0 0 0;
+    margin: 100px 0 0 0;
 }
 
 a {
     cursor: pointer;
+}
+
+.text {
+    font-size: 21px;
 }
 
 .info-box {
@@ -218,6 +224,7 @@ a {
     font-size: 36px;
     font-weight: 300;
     color: #FFFFFF;
+    text-align: left !important;
 }
 
 .blue-line-subtitle{
@@ -232,6 +239,66 @@ a {
     font-weight: 300;
     color: #FFFFFF;
     float: right;
+}
+
+.links {
+    font-size: 28px;
+}
+
+.links a {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 13px;
+}
+
+.form-send-to-email{
+    padding: 10px 0;
+    background: #D0E4F2;
+}
+
+.form-control {
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    height: 55px;
+    line-height: 1.42857143;
+    color: #555;
+    background: #fff none;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.form-control:focus {
+    border-color: rgba(74, 100, 145, 0.5);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(74, 100, 145, 0.75), 0 0 8px rgba(74, 100, 145, 0.4);
+    box-shadow: inset 0 1px 1px rgba(74, 100, 145, 0.75), 0 0 8px rgba(74, 100, 145, 0.4);
+    z-index: 2;
+}
+
+.button {
+    background: #4A6491;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    width: 259px;
+    height: 58px;
+    border: none;
+    font-weight: 200;
+    line-height: normal;
+    font-size: 36px;
+
+    color: #FFFFFF;
 }
 
 .information {
