@@ -233,3 +233,9 @@ a {
     color: #FFFFFF;
     float: right;
 }
+
+.information {
+    font-size: 24px;;
+    color: #566E98;
+    text-decoration: underline;
+}
