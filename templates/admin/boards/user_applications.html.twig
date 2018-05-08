@@ -1,0 +1,93 @@
+{% if userApplications %}
+    <div>Заявки пользователей:</div>
+
+    <div id="table-container">
+        <table id="user-applications">
+            <thead>
+            <tr>
+                <th onclick="sortTable($('#user-applications').find('tbody'), 0, 'tabledit-span', 'number')">#</th>
+                <th onclick="sortTable($('#user-applications').find('tbody'), 1, 'tabledit-span', 'string')">Имя</th>
+                <th onclick="sortTable($('#user-applications').find('tbody'), 2, 'tabledit-span', 'string')">Email</th>
+                <th onclick="sortTable($('#user-applications').find('tbody'), 3, 'tabledit-span', 'string')">Дата подачи</th>
+                <th onclick="sortTable($('#user-applications').find('tbody'), 4, 'tabledit-span', 'string')">Телефон</th>
+                <th onclick="sortTable($('#user-applications').find('tbody'), 5, 'tabledit-span', 'string')">Доп. инфо</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for item in userApplications %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td class="tabledit-input-date">{{ item.dateOfApplication | date("d.m.Y") }}</td>
+                    <td>{{ item.phone }}</td>
+                    <td>{{ item.info }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin: 30px"></div>
+
+    <script type="text/javascript">
+
+        $('#user-applications').Tabledit({
+            url: '{{ path('user_applications_edit_from_table_action') }}',
+            inputClass: 'input_green',
+            editButton: true,
+            buttons: {
+                edit: {
+                    class: 'button button-edit-table',
+                    html: '<span class="glyphicon glyphicon-pencil"></span>',
+                    action: 'edit',
+                    method: 'POST'
+                },
+                delete: {
+                    class: 'button button-edit-table',
+                    html: '<span class="glyphicon glyphicon-trash"></span>',
+                    action: 'delete',
+                    method: 'DELETE'
+                },
+                save: {
+                    class: 'button button-save',
+                    html: 'Сохранить'
+                },
+                restore: {
+                    class: 'button btn-sm btn-warning',
+                    html: 'Восстановить',
+                    action: 'restore'
+                },
+                confirm: {
+                    class: 'button button-delete',
+                    html: 'Подтвердить'
+                }
+            },
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'name'], [2, 'email'], [3, 'dateOfApplication'], [4, 'phone'], [5, 'info']]
+            }
+        });
+
+        $('.tabledit-input-date').each(function () {
+            $row = $(this);
+
+            $row.find('input').addClass('js-datepicker');
+        });
+
+        $('.js-datepicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1950:now'
+        });
+
+    </script>
+
+{% else %}
+
+    <div class="text center">Нет заявок</div>
+
+{% endif %}

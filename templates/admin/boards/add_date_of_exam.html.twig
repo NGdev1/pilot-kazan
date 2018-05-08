@@ -1,0 +1,59 @@
+<div id="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Дата</th>
+            <th>Текст</th>
+            <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+            <td>#</td>
+            <td><input id="date" class="input_green js-datepicker"/></td>
+            <td><input id="text" class="input_green"/></td>
+            <td>
+                <button class="button button-save" onclick="sendAjax()">Сохранить</button>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    function sendAjax() {
+        var date = $('#date').val();
+        if (!date) return;
+
+        var text = $('#text').val();
+        if (!text) return;
+
+        var request = $.ajax({
+            url: '{{ path('add_date_of_exam_by_admin_action') }}',
+            type: 'POST',
+            data: {
+                'date': date,
+                'text': text
+            }
+        });
+
+        request.done(function (data) {
+            if (data.status == 'ok') {
+                back();
+            }
+        });
+
+        request.fail(function (data) {
+            showDialog('Ошибка с сервера', data.responseJSON.errors);
+        });
+    }
+
+    $('.js-datepicker').datepicker({
+        changeMonth: true,
+        changeYear: true,
+        yearRange: '1950:now'
+    });
+</script>

@@ -1,0 +1,85 @@
+{% if documentsForRegistration %}
+    <div>Документы для регистрации:</div>
+
+    <div id="table-container">
+        <table id="documents-for-registration">
+            <thead>
+            <tr>
+                <th onclick="sortTable($('#documents-for-registration').find('tbody'), 0, 'tabledit-span', 'number')">#</th>
+                <th onclick="sortTable($('#documents-for-registration').find('tbody'), 1, 'tabledit-span', 'string')">Текст</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {% for item in documentsForRegistration %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.text }}</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin: 30px"></div>
+
+    <script type="text/javascript">
+
+        $('#documents-for-registration').Tabledit({
+            url: '{{ path('document_for_registration_edit_from_table_action') }}',
+            inputClass: 'input_green',
+            editButton: true,
+            buttons: {
+                edit: {
+                    class: 'button button-edit-table',
+                    html: '<span class="glyphicon glyphicon-pencil"></span>',
+                    action: 'edit',
+                    method: 'POST'
+                },
+                delete: {
+                    class: 'button button-edit-table',
+                    html: '<span class="glyphicon glyphicon-trash"></span>',
+                    action: 'delete',
+                    method: 'DELETE'
+                },
+                save: {
+                    class: 'button button-save',
+                    html: 'Сохранить'
+                },
+                restore: {
+                    class: 'button btn-sm btn-warning',
+                    html: 'Восстановить',
+                    action: 'restore'
+                },
+                confirm: {
+                    class: 'button button-delete',
+                    html: 'Подтвердить'
+                }
+            },
+            columns: {
+                identifier: [0, 'id'],
+                editable: [[1, 'text']]
+            }
+        });
+
+        $('.tabledit-input-date').each(function () {
+            $row = $(this);
+
+            $row.find('input').addClass('js-datepicker');
+        });
+
+        $('.js-datepicker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            yearRange: '1950:now'
+        });
+
+    </script>
+
+{% else %}
+
+    <div class="text center">Нет документов для регистрации</div>
+
+{% endif %}

@@ -9,15 +9,120 @@
          "title": "Заявки",
          "rightButton": "add",
          "leftButton": "back",
-         "url": "/admin/boards/applications",
-         "hasContent": false,
+         "url": "/admin/boards/user-applications",
+         "hasContent": true,
          "menu" : [
             {
                "title": "Добавить заявку",
                "rightButton": "logout",
                "leftButton": "back",
-               "url": "/admin/boards/applications/add",
-               "hasContent": false
+               "url": "/admin/boards/user-applications/add",
+               "hasContent": true
+            }
+         ]
+      },
+      {
+         "title": "Редактировать сайт",
+         "rightButton": "logout",
+         "leftButton": "back",
+         "url": "/admin/boards/site-edit",
+         "hasContent": false,
+         "menu" : [
+            {
+               "title": "Даты набора",
+               "rightButton": "add",
+               "leftButton": "back",
+               "url": "/admin/boards/dates-of-admission",
+               "hasContent": true,
+               "menu" : [
+                  {
+                     "title": "Добавить",
+                     "rightButton": "logout",
+                     "leftButton": "back",
+                     "url": "/admin/boards/dates-of-admission/add",
+                     "hasContent": true
+                  }
+               ]
+            },
+            {
+               "title": "Медосмотры",
+               "rightButton": "add",
+               "leftButton": "back",
+               "url": "/admin/boards/dates-of-medical",
+               "hasContent": true,
+               "menu" : [
+                  {
+                     "title": "Добавить",
+                     "rightButton": "add",
+                     "leftButton": "back",
+                     "url": "/admin/boards/dates-of-medical/add",
+                     "hasContent": true
+                  }
+               ]
+            },
+            {
+               "title": "Даты экзаменов",
+               "rightButton": "add",
+               "leftButton": "back",
+               "url": "/admin/boards/dates-of-exam",
+               "hasContent": true,
+               "menu" : [
+                  {
+                     "title": "Добавить",
+                     "rightButton": "logout",
+                     "leftButton": "back",
+                     "url": "/admin/boards/dates-of-exam/add",
+                     "hasContent": true
+                  }
+               ]
+            },
+            {
+               "title": "Документы для регистрации в группе",
+               "rightButton": "add",
+               "leftButton": "back",
+               "url": "/admin/boards/documents-for-registration",
+               "hasContent": true,
+               "menu" : [
+                  {
+                     "title": "Добавить",
+                     "rightButton": "logout",
+                     "leftButton": "back",
+                     "url": "/admin/boards/documents-for-registration/add",
+                     "hasContent": true
+                  }
+               ]
+            },
+            {
+               "title": "Расписание",
+               "rightButton": "add",
+               "leftButton": "back",
+               "url": "/admin/boards/schedule",
+               "hasContent": true,
+               "menu" : [
+                  {
+                     "title": "Добавить",
+                     "rightButton": "logout",
+                     "leftButton": "back",
+                     "url": "/admin/boards/schedule/add",
+                     "hasContent": true
+                  }
+               ]
+            },
+            {
+               "title": "Приемущества",
+               "rightButton": "add",
+               "leftButton": "back",
+               "url": "/admin/boards/promotion",
+               "hasContent": true,
+               "menu" : [
+                  {
+                     "title": "Добавить",
+                     "rightButton": "logout",
+                     "leftButton": "back",
+                     "url": "/admin/boards/promotion/add",
+                     "hasContent": true
+                  }
+               ]
             }
          ]
       }

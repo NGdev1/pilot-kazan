@@ -139,7 +139,7 @@ function getUrlAfterRoot() {
             nextUrl += currentFullUrl[i];
         }
 
-        return '/admin/' + nextUrl;
+        return '/admin' + nextUrl;
     }
 }
 

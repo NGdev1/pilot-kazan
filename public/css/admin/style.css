@@ -91,12 +91,12 @@ a{
     position: relative;
     color: white;
     background-color: #4A6491;
-    border-radius: 10px;
+    border-radius: 15px;
     text-decoration: none;
     width: 20%;
     padding: 1.5%;
     text-align: center;
-    vertical-align: middle;
+    vertical-align: top;
     border: 0;
     font-size: 18px;
     font-weight: 300;
@@ -181,12 +181,12 @@ a{
 
 .blue{
     color: #ffffff;
-    background: #6693d5;
+    background-color: #4A6491;
 }
 
 .blue:hover{
     color: #ffffff;
-    background: #446490;
+    background-color: #374d6e;
 }
 
 .red{

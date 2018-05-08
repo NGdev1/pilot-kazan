@@ -170,14 +170,14 @@ body {
 }
 
 h1{
-    font-size: 44px;
+    font-size: 35px;
     font-weight: bold;
     margin: 60px auto;
     text-align: center;
 }
 
 h2 {
-    font-size: 44px;
+    font-size: 35px;
     font-weight: normal;
     margin: 100px 0 0 0;
 }
@@ -187,11 +187,11 @@ a {
 }
 
 .text {
-    font-size: 21px;
+    font-size: 18px;
 }
 
 .info-box {
-    font-size: 21px;
+    font-size: 18px;
     width: 300px;
     margin-right: 33px;
     box-sizing: border-box;
@@ -199,10 +199,11 @@ a {
 }
 
 .info-box .title {
-    font-size: 44px;
+    font-size: 30px;
     font-weight: 400;
-    color: #566E98;
+    color: #293b47;
     margin-top: 35px;
+    margin-bottom: 0;
 }
 
 .feedback-item{

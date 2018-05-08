@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\DateOfAdmission;
+use App\Entity\Promotion;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -18,13 +20,22 @@ class DefaultController extends Controller
      */
     public function showMainPageAction(Request $request)
     {
+        $datesOfAdmission = $this->getDoctrine()->getRepository(DateOfAdmission::class)->findAll();
+        $promotion = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+
         if ($request->isXmlHttpRequest()) {
             return $this->render(
-                'site/main.html.twig'
+                'site/main.html.twig',
+                [
+                    'datesOfAdmission' => $datesOfAdmission,
+                    'promotion' => $promotion
+                ]
             );
         } else {
             return $this->siteRenderFullView([
-                'content' => 'main'
+                'content' => 'main',
+                'datesOfAdmission' => $datesOfAdmission,
+                'promotion' => $promotion,
             ]);
         }
     }
