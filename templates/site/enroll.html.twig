@@ -2,37 +2,58 @@
 
     <h1>ЗАПИСЬ НА ОБУЧЕНИЕ</h1>
 
-    <h2>Документы для регистрации в группе</h2>
-    <div class="text" style="margin-top: 20px">
-        <div>1) Копия паспорта № 1-2. №5</div>
-        <div>2) Номер СНИЛС</div>
-        <div>3) Номер ИНН</div>
-        <div>4) Фото 2 шт 3*4</div>
-        <div>5) Справка нарколога</div>
-        <div>6) Справка психиатра</div>
-        <div>7) Справка общей практики</div>
-    </div>
+    {% if documentsForRegistration %}
 
-    <div class="clearfix"></div>
+        <h2>Документы для регистрации в группе</h2>
+        <ul class="text" style="margin-top: 20px">
+            {% for item in documentsForRegistration %}
+                <li style="list-style: decimal"> {{ item.text }}</li>
+            {% endfor %}
+        </ul>
 
-    <div style="margin: 30px;" class="clearfix"></div>
+        <div class="clearfix"></div>
+
+        <div style="margin: 30px;" class="clearfix"></div>
+
+    {% endif %}
 </div>
 
-<form class="form-send-to-email" action="/" method="post">
-    <div class="content">
-        <h2 style="margin: 0 0 20px 0">Подать заявку</h2>
+{{ form_start(form, {'attr': {'id': 'user-application-form', 'class': 'form-send-to-email'}}) }}
+<div class="content">
 
-        <input name="name" class="form-control" placeholder="Имя*">
-        <input name="email" class="form-control" placeholder="Email*">
-        <input name="phone" class="form-control" placeholder="Телефон*">
+    <h2 style="margin: 0 0 20px 0">Подать заявку</h2>
 
-        <label style="font-size: 20px;">Доп информация/сообщение (не обязательно)
-            <textarea name="phone" class="form-control" style="min-height: 90px"></textarea>
-        </label>
+    {{ form_widget(form) }}
 
-        <input class="button" style="margin-top: 20px" type="submit">
-    </div>
-</form>
+    <input class="button" style="margin-top: 20px" type="submit">
+</div>
+{{ form_end(form) }}
+
+<script type="text/javascript">
+
+    var form = $('#user-application-form');
+
+    form.submit(function () {
+        var request = $.ajax({
+            url: form.attr("action"),
+            type: 'POST',
+            data: form.serialize()
+        });
+
+        request.done(function (data) {
+            if (data.status == 'ok') {
+                showDialog('Успешно', 'Заявка принята. Вам перезвонят.');
+            }
+        });
+
+        request.fail(function (data) {
+            showDialog('Ошибка с сервера', data.responseJSON.errors);
+        });
+
+        return false;
+    });
+
+</script>
 
 <div class="content">
 

@@ -40,22 +40,65 @@
 
     {% endif %}
 
-    <h2>Контактная информация</h2>
-    <p class="info-box">
+</div>
+
+<div style="margin: 50px;" class="clearfix"></div>
+
+{{ form_start(form, {'attr': {'id': 'user-application-form', 'class': 'form-send-to-email'}}) }}
+<div class="content">
+
+    <h2 style="margin: 0 0 20px 0">Подать заявку</h2>
+
+    {{ form_widget(form) }}
+
+    <input class="button" style="margin-top: 20px" type="submit">
+</div>
+{{ form_end(form) }}
+
+<script type="text/javascript">
+
+    var form = $('#user-application-form');
+
+    form.submit(function () {
+        var request = $.ajax({
+            url: form.attr("action"),
+            type: 'POST',
+            data: form.serialize()
+        });
+
+        request.done(function (data) {
+            if (data.status == 'ok') {
+                showDialog('Успешно', 'Заявка принята. Вам перезвонят.');
+            }
+        });
+
+        request.fail(function (data) {
+            showDialog('Ошибка с сервера', data.responseJSON.errors);
+        });
+
+        return false;
+    });
+
+</script>
+
+
+<div class="content">
+    <h2>Контактная информация </h2>
+    <div class="info-box">
         г. Казань,
         ул, Бутлерова,
         дом 30
-        тел: +7(843) 267-58-08
-        тел: +7 (927)-400-06-65
-    </p>
+        <div>тел: +7(843) 267-58-08</div>
+        <div>тел: +7 (927)-400-06-65</div>
+    </div>
 
-    <p class="info-box">
+    <div class="info-box">
         г. Казань,
         ул. Профсоюзная,
         дом 40-42
-        тел: +7(843) 214-34-14
-        тел: +7 (927)-400-06-64
-    </p>
+        <div>тел: +7(843) 214-34-14</div>
+        <div>тел: +7 (927)-400-06-64</div>
+    </div>
 
     <div class="clearfix"></div>
 

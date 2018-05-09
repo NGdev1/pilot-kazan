@@ -23,10 +23,6 @@ body {
         margin: 0 50px 0 0 !important;
     }
 
-    .menu a{
-        line-height: 70px !important;
-    }
-
     .blue-line-right-info {
         display: none;
     }
@@ -42,11 +38,16 @@ body {
         right: 0;
         bottom: 0;
 
-        padding: 10%;
+        padding: 28px !important;
         background-color: rgba(255, 255, 255, 0.9);
         backdrop-filter: blur(7px);
         -webkit-backdrop-filter: blur(7px);
         width: 100%;
+    }
+
+    .menu-item {
+        display: block !important;
+        height: 70px !important;
     }
 
     .menu-icon{
@@ -142,7 +143,7 @@ body {
     display: none;
     position: absolute;
     background: white;
-    padding: 0 20px 20px 20px;
+    padding: 20px 20px 5px 20px;
     border-radius: 15px;
     border: 1px solid #999999;
 }
@@ -150,9 +151,9 @@ body {
 .dropdown-item{
     display: block;
     font-size: 18px;
-    height: 30px !important;
+    height: 15px !important;
     line-height: 18px !important;
-    padding: 0;
+    margin-bottom: 12px;
 }
 
 .content{
@@ -257,8 +258,7 @@ a {
     background: #D0E4F2;
 }
 
-.form-control {
-    position: relative;
+.input_green {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -280,12 +280,11 @@ a {
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-.form-control:focus {
+.input_green:focus {
     border-color: rgba(74, 100, 145, 0.5);
     outline: 0;
     -webkit-box-shadow: inset 0 1px 1px rgba(74, 100, 145, 0.75), 0 0 8px rgba(74, 100, 145, 0.4);
     box-shadow: inset 0 1px 1px rgba(74, 100, 145, 0.75), 0 0 8px rgba(74, 100, 145, 0.4);
-    z-index: 2;
 }
 
 .button {
@@ -297,7 +296,7 @@ a {
     border: none;
     font-weight: 200;
     line-height: normal;
-    font-size: 36px;
+    font-size: 27px;
 
     color: #FFFFFF;
 }

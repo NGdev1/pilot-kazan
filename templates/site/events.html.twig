@@ -1,49 +1,51 @@
+{% set mnths = ['','января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'] %}
+
 <div class="content">
     <h1>ДАТЫ МЕРОПРИЯТИЙ</h1>
-    <h2>Занятия</h2>
-    <div class="text">1 мая выходной, 15 мая занятие 1 группы переносится.</div>
 
-    <div class="info-box">
-        <div class="title">1 группа</div>
-        <div>Понедельник 18:00</div>
-        <div>Среда 18:00</div>
-    </div>
+    {% if schedule %}
 
-    <div class="info-box">
-        <div class="title">2 группа</div>
-        <div>Вторник 16:00</div>
-        <div>Четверг 16:00</div>
-    </div>
+        <h2 style="margin-bottom: -20px;">Занятия</h2>
 
-    <div class="info-box">
-        <div class="title">3 группа</div>
-        <div>Понедельник 16:00</div>
-        <div>Среда 16:00</div>
-    </div>
+        {% for item in schedule %}
+            <div class="info-box">
+                <div class="title">{{ item.title }}</div>
+                <div>{{ item.text }}</div>
+            </div>
+        {% endfor %}
 
-    <div class="info-box">
-        <div class="title">4 группа</div>
-        <div>Понедельник 18:00</div>
-        <div>Среда 18:00</div>
-    </div>
+        <div class="clearfix"></div>
 
-    <div class="clearfix"></div>
+    {% endif %}
 
 
-    <h2>Даты медосмотров</h2>
-    <div class="info-box">
-        <div class="title">5 апреля</div>
-        Окулист
-    </div>
+    {% if datesOfMedical %}
 
-    <div class="clearfix"></div>
+        <h2 style="margin-bottom: -20px;">Даты медосмотров</h2>
 
-    <h2>Даты экзаменов</h2>
-    <div class="text">Экзамен будет проводится по адресу: улица Актайская,2</div>
-    <div class="info-box">
-        <div class="title">1 группа</div>
-        20 мая
-    </div>
+        {% for item in datesOfMedical %}
+            <div class="info-box">
+                <div class="title">{{ item.date | date("j") }} {{ mnths[item.date |date("n")] }}</div>
+                {{ item.text }}
+            </div>
+        {% endfor %}
+
+        <div class="clearfix"></div>
+
+    {% endif %}
+
+    {% if datesOfExam %}
+
+        <h2 style="margin-bottom: -20px;">Даты экзаменов</h2>
+
+        {% for item in datesOfExam %}
+            <div class="info-box">
+                <div class="title">{{ item.date | date("j") }} {{ mnths[item.date |date("n")] }}</div>
+                {{ item.text }}
+            </div>
+        {% endfor %}
+
+    {% endif %}
 
     <div class="clearfix"></div>
 

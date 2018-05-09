@@ -21,20 +21,35 @@
         var contentContainer;
         var loadingIndicator;
 
+        var mobileVersionTitle;
+        var logo;
+
         $(document).ready(function () {
             contentContainer = $('#content');
             loadingIndicator = $('#circleG');
+
+            mobileVersionTitle = $('#mobile-version-title');
+            logo = $('#logo');
 
             setSelected('{{ content }}');
 
             $('.menu-item-dropdown').on('click', function () {
                 var dropdownMenu = $(this).find('.dropdown-menu');
+
                 if (dropdownMenu.is(":visible")) {
-                    dropdownMenu.hide();
+                    dropdownMenu.slideUp(100);
                 } else {
-                    dropdownMenu.show();
-                    dropdownMenu.css('left', this.offsetLeft + 'px');
-                    dropdownMenu.css('top', this.offsetTop + 25 + 'px');
+                    var topOffset;
+
+                    if ($(document).width() > 750) {
+                        topOffset = 25;
+                    } else {
+                        topOffset = 68;
+                    }
+
+                    dropdownMenu.slideDown(100);
+                    dropdownMenu.css('left', (this.offsetLeft - 7) + 'px');
+                    dropdownMenu.css('top', this.offsetTop + topOffset + 'px');
                 }
             });
         });
@@ -82,7 +97,9 @@
         }
 
         var isMenuOpened = false;
-        function changeMenuSatate() {
+        function changeMenuState() {
+            if ($(document).width() > 750) return;
+
             isMenuOpened = !isMenuOpened;
             if (isMenuOpened) {
                 $('.menu').fadeIn(150)
@@ -90,6 +107,29 @@
                 $('.menu').fadeOut(150)
             }
         }
+
+        function changeImageToTitle() {
+            logo.hide();
+            mobileVersionTitle.show();
+            //mobileVersionTitle.fadeIn(150);
+        }
+
+        function changeTitleToImage() {
+            logo.show();
+            //logo.fadeIn(150);
+            mobileVersionTitle.hide();
+        }
+
+        $(document).on('scroll', function (e) {
+            if ($(document).width() > 750) return;
+
+            if ($(document).scrollTop() < 500) {
+                changeTitleToImage();
+            }
+            else {
+                changeImageToTitle();
+            }
+        });
 
         function setSelected(selected) {
             $('.selected').removeClass('selected');
@@ -100,38 +140,44 @@
         function loadMainPage() {
             loadContent('{{ path('site_index') }}', 'Автошкола Пилот-М', true);
             setSelected('main');
-
+            changeMenuState();
         }
 
         function loadEventsPage() {
             loadContent('{{ path('site_events') }}', 'Даты мероприятий', true);
             setSelected('events');
+            changeMenuState();
         }
 
         function loadTheoryAndPracticePage() {
             loadContent('{{ path('site_theory_and_practice') }}', 'Теория и практика', true);
             setSelected('theory-and-practice');
+            changeMenuState();
         }
 
         function loadResourcesPage() {
             loadContent('{{ path('site_resources_for_students') }}', 'Ресурсы', true);
             setSelected('resources');
+            changeMenuState();
         }
 
 
         function loadEnrollPage() {
             loadContent('{{ path('site_enroll') }}', 'Запись', true);
             setSelected('enroll');
+            changeMenuState();
         }
 
         function loadAboutPage() {
             loadContent('{{ path('site_about') }}', 'О нас', true);
             setSelected('about');
+            changeMenuState();
         }
 
         function loadInfoPage() {
             loadContent('{{ path('site_info') }}', 'Сведения', true);
             setSelected('info');
+            changeMenuState();
         }
 
     </script>
@@ -144,9 +190,12 @@
             <div class="logo-space"></div>
             <div class="header">
                 <div style="height: 0;">
-                    <div class="menu-icon" onclick="changeMenuSatate()"></div>
+                    <div class="menu-icon" onclick="changeMenuState()"></div>
                 </div>
-                <div class="logo"></div>
+                <div id="logo" class="logo"></div>
+                <div id="mobile-version-title" class="title center"
+                     style="margin-top: -5px !important; height: 65px; display: none; pointer-events: none;">Главная
+                </div>
             </div>
 
             <ul class="menu noselect">
@@ -157,7 +206,8 @@
                     <a id="for-students">Для учащихся</a>
                     <div class="dropdown-menu">
                         <a id="events" class="dropdown-item" onclick="loadEventsPage()">Даты мероприятий</a>
-                        <a id="theory-and-practice" class="dropdown-item" onclick="loadTheoryAndPracticePage()">Теория и практика</a>
+                        <a id="theory-and-practice" class="dropdown-item" onclick="loadTheoryAndPracticePage()">Теория и
+                            практика</a>
                         <a id="resources" class="dropdown-item" onclick="loadResourcesPage()">Ресурсы</a>
                     </div>
                 </li>

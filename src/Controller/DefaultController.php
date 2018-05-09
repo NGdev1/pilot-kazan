@@ -3,10 +3,21 @@
 namespace App\Controller;
 
 use App\Entity\DateOfAdmission;
+use App\Entity\DateOfExam;
+use App\Entity\DateOfMedical;
+use App\Entity\DocumentForRegistration;
 use App\Entity\Promotion;
+use App\Entity\Schedule;
+use App\Entity\UserApplication;
+use App\Form\UserApplicationType;
+use DateTime;
+use Exception;
+use Monolog\Logger;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DefaultController extends Controller
 {
@@ -16,19 +27,58 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/user-applications/add", name="add_user_application_action")
+     * @Method("POST")
+     */
+    public function addUserApplicationAction(Request $request)
+    {
+        $request->setRequestFormat('json');
+
+        $userApplication = new UserApplication();
+
+        $form = $this->createForm(UserApplicationType::class, $userApplication);
+
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            throw new Exception("Введены неверные данные");
+        }
+
+        $userApplication->setDateOfApplication(new DateTime());
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($userApplication);
+        $entityManager->flush();
+
+        $result = array(
+            'status' => 'ok',//ok | error
+        );
+
+        return new Response(json_encode($result));
+    }
+
+
+    /**
      * @Route("/", name="site_index")
      */
     public function showMainPageAction(Request $request)
     {
         $datesOfAdmission = $this->getDoctrine()->getRepository(DateOfAdmission::class)->findAll();
         $promotion = $this->getDoctrine()->getRepository(Promotion::class)->findAll();
+        $form = $this->createForm(
+            UserApplicationType::class, null,
+            array(
+                'action' => $this->generateUrl('add_user_application_action'),
+            )
+        );
 
         if ($request->isXmlHttpRequest()) {
             return $this->render(
                 'site/main.html.twig',
                 [
                     'datesOfAdmission' => $datesOfAdmission,
-                    'promotion' => $promotion
+                    'promotion' => $promotion,
+                    'form' => $form->createView()
                 ]
             );
         } else {
@@ -36,6 +86,7 @@ class DefaultController extends Controller
                 'content' => 'main',
                 'datesOfAdmission' => $datesOfAdmission,
                 'promotion' => $promotion,
+                'form' => $form->createView()
             ]);
         }
     }
@@ -45,13 +96,25 @@ class DefaultController extends Controller
      */
     public function showEventsAction(Request $request)
     {
+        $schedule = $this->getDoctrine()->getRepository(Schedule::class)->findAll();
+        $datesOfMedical = $this->getDoctrine()->getRepository(DateOfMedical::class)->findAll();
+        $datesOfExam = $this->getDoctrine()->getRepository(DateOfExam::class)->findAll();
+
         if ($request->isXmlHttpRequest()) {
             return $this->render(
-                'site/events.html.twig'
+                'site/events.html.twig',
+                [
+                    'schedule' => $schedule,
+                    'datesOfMedical' => $datesOfMedical,
+                    'datesOfExam' => $datesOfExam
+                ]
             );
         } else {
             return $this->siteRenderFullView([
-                'content' => 'events'
+                'content' => 'events',
+                'schedule' => $schedule,
+                'datesOfMedical' => $datesOfMedical,
+                'datesOfExam' => $datesOfExam
             ]);
         }
     }
@@ -93,13 +156,27 @@ class DefaultController extends Controller
      */
     public function showEnrollAction(Request $request)
     {
+        $docmentsForRegistration = $this->getDoctrine()->getRepository(DocumentForRegistration::class)->findAll();
+        $form = $this->createForm(
+            UserApplicationType::class, null,
+            array(
+                'action' => $this->generateUrl('add_user_application_action'),
+            )
+        );
+
         if ($request->isXmlHttpRequest()) {
             return $this->render(
-                'site/enroll.html.twig'
+                'site/enroll.html.twig',
+                [
+                    'documentsForRegistration' => $docmentsForRegistration,
+                    'form' => $form->createView()
+                ]
             );
         } else {
             return $this->siteRenderFullView([
-                'content' => 'enroll'
+                'content' => 'enroll',
+                'documentsForRegistration' => $docmentsForRegistration,
+                'form' => $form->createView()
             ]);
         }
     }
