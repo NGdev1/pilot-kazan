@@ -52,12 +52,14 @@ body {
 
     .menu-icon{
         display: block !important;
+        width: 30px !important;
+        height: 30px !important;
     }
 
     .logo{
-        width: 90px !important;
+        width: 200px !important;
         height: 90px !important;
-        margin: -30px auto 20px auto !important;
+        margin: -15px auto 5px auto !important;
     }
 
     .header {
@@ -77,13 +79,13 @@ body {
 }
 
 .logo{
-    background: url("../../images/Logo.png");
+    background: url("../../images/Logo.png") no-repeat;
     background-size: 100%;
 
     float: left;
     margin-right: 20px;
-    width: 107px;
-    height: 107px;
+    width: 240px;
+    height: 90px;
 }
 
 .menu-icon{
@@ -118,7 +120,7 @@ body {
 }
 
 .menu-item + .menu-item {
-    margin-left: 60px;
+    margin-left: 40px;
 }
 
 .menu a{
@@ -131,7 +133,7 @@ body {
     background: none;
     border: none;
     white-space: nowrap;
-    font-size: 22px;
+    font-size: 20px;
     color: #0F0E0E;
 }
 
