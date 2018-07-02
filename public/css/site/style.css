@@ -308,3 +308,8 @@ a {
     color: #566E98;
     text-decoration: underline;
 }
+
+#map {
+    width: 100%; height: 400px; padding: 0; margin: 40px 0 0 0;
+    background: #D0E4F2;
+}
