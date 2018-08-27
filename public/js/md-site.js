@@ -31,7 +31,7 @@ $(document).ready(function () {
 });
 
 function loadContent(url, title, addToHistory) {
-    if (url != undefined && contentContainer != undefined) {
+    if (url !== undefined && contentContainer !== undefined) {
 
         loadingIndicator.show();
         contentContainer.hide();
