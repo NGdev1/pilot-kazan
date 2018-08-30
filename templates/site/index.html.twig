@@ -31,6 +31,7 @@
         });
 
         var isMenuOpened = false;
+
         function changeMenuState() {
             if ($(document).width() > 750) return;
 
@@ -127,29 +128,19 @@
                 </div>
             </div>
 
-            <ul class="menu noselect">
-                <li class="menu-item">
-                    <a id="main" onclick="loadMainPage()">Главная</a>
-                </li>
-                <li class="menu-item menu-item-dropdown">
-                    <a id="for-students">Для учащихся</a>
-                    <div class="dropdown-menu">
-                        <a id="events" class="dropdown-item" onclick="loadEventsPage()">Даты мероприятий</a>
-                        <a id="theory-and-practice" class="dropdown-item" onclick="loadTheoryAndPracticePage()">Теория и
-                            практика</a>
-                        <a id="resources" class="dropdown-item" onclick="loadResourcesPage()">Ресурсы</a>
-                    </div>
-                </li>
-                <li class="menu-item">
-                    <a id="enroll" onclick="loadEnrollPage()">Записаться</a>
-                </li>
-                <li class="menu-item">
-                    <a id="about" onclick="loadAboutPage()">Об атошколе</a>
-                </li>
-                <li class="menu-item">
-                    <a id="info" onclick="loadInfoPage()">Сведения</a>
-                </li>
-            </ul>
+            <div class="menu noselect">
+                <a class="menu-item" id="main" onclick="loadMainPage()">Главная</a>
+                <a class="menu-item-dropdown menu-item" id="for-students">Для учащихся</a>
+                <div class="dropdown-menu">
+                    <a id="events" class="dropdown-item" onclick="loadEventsPage()">Даты мероприятий</a>
+                    <a id="theory-and-practice" class="dropdown-item" onclick="loadTheoryAndPracticePage()">Теория и
+                        практика</a>
+                    <a id="resources" class="dropdown-item" onclick="loadResourcesPage()">Ресурсы</a>
+                </div>
+                <a class="menu-item" id="enroll" onclick="loadEnrollPage()">Записаться</a>
+                <a class="menu-item" id="about" onclick="loadAboutPage()">Об атошколе</a>
+                <a class="menu-item" id="info" onclick="loadInfoPage()">Сведения</a>
+            </div>
         </div>
     </div>
 

@@ -47,7 +47,9 @@ body {
 
     .menu-item {
         display: block !important;
-        height: 70px !important;
+        text-align: left !important;
+        float: left;
+        height: 60px !important;
     }
 
     .menu-icon{
@@ -117,9 +119,6 @@ body {
 .menu-item{
     list-style: none;
     display: inline;
-}
-
-.menu-item + .menu-item {
     margin-left: 40px;
 }
 
@@ -145,7 +144,7 @@ body {
     display: none;
     position: absolute;
     background: white;
-    padding: 20px 20px 5px 20px;
+    padding: 10px 10px 5px 20px;
     border-radius: 15px;
     border: 1px solid #999999;
 }
@@ -155,7 +154,8 @@ body {
     font-size: 18px;
     height: 15px !important;
     line-height: 18px !important;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+    text-align: left !important;
 }
 
 .content{

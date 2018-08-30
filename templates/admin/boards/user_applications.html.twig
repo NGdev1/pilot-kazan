@@ -35,6 +35,27 @@
 
     <script type="text/javascript">
 
+        var normalContentWidth = $('.center-content').width();
+        function setNormalContentWidth() {
+            $('.center-content').animate({
+                width: normalContentWidth
+            }, 200 );
+        }
+
+        function setBroaderContentWidth(){
+            $('.center-content').animate({
+                width: $(window).width() * 0.8
+            }, 200 );
+        }
+
+        //called from finder
+        function onBoardDestroy() {
+            setNormalContentWidth();
+        }
+
+        //called when board opened
+        setBroaderContentWidth();
+
         $('#user-applications').Tabledit({
             url: '{{ path('user_applications_edit_from_table_action') }}',
             inputClass: 'input_green',
