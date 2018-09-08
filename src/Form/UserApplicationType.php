@@ -13,9 +13,8 @@ class UserApplicationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', null, ['label' => ' ', 'attr' => ['class' => 'input_green', 'placeholder' => 'Имя*']])
-            ->add('email', null, ['label' => ' ', 'attr' => ['class' => 'input_green', 'placeholder' => 'Email*']])
-            ->add('phone', null, ['label' => ' ', 'attr' => ['class' => 'input_green', 'placeholder' => 'Телефон*']])
+            ->add('name', null, ['label' => 'Имя', 'attr' => ['class' => 'input_green', 'placeholder' => 'Имя*']])
+            ->add('phone', null, ['label' => 'Телефон', 'attr' => ['class' => 'input_green', 'placeholder' => 'Телефон*']])
             ->add('info' , TextareaType::class, ['required' => false, 'label' => 'Доп. иформация', 'attr' => ['class' => 'input_green', 'style' => 'min-height: 90px']])
         ;
     }

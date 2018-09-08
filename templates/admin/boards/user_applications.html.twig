@@ -7,7 +7,6 @@
             <tr>
                 <th onclick="sortTable($('#user-applications').find('tbody'), 0, 'tabledit-span', 'number')">#</th>
                 <th onclick="sortTable($('#user-applications').find('tbody'), 1, 'tabledit-span', 'string')">Имя</th>
-                <th onclick="sortTable($('#user-applications').find('tbody'), 2, 'tabledit-span', 'string')">Email</th>
                 <th onclick="sortTable($('#user-applications').find('tbody'), 3, 'tabledit-span', 'string')">Дата подачи</th>
                 <th onclick="sortTable($('#user-applications').find('tbody'), 4, 'tabledit-span', 'string')">Телефон</th>
                 <th onclick="sortTable($('#user-applications').find('tbody'), 5, 'tabledit-span', 'string')">Доп. инфо</th>
@@ -20,7 +19,6 @@
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.email }}</td>
                     <td class="tabledit-input-date">{{ item.dateOfApplication | date("d.m.Y") }}</td>
                     <td>{{ item.phone }}</td>
                     <td>{{ item.info }}</td>
@@ -89,7 +87,7 @@
             },
             columns: {
                 identifier: [0, 'id'],
-                editable: [[1, 'name'], [2, 'email'], [3, 'dateOfApplication'], [4, 'phone'], [5, 'info']]
+                editable: [[1, 'name'], [2, 'dateOfApplication'], [3, 'phone'], [4, 'info']]
             }
         });
 

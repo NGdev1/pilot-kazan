@@ -24,11 +24,6 @@ class UserApplication
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $email;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $phone;
 
     /**

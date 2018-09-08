@@ -7,6 +7,18 @@ body {
     height: 100%; position: absolute; padding: 0; margin: 0; width: 100%;
 }
 
+.mozaik-background {
+    /* Фиксируем фон веб-страницы */
+    background-size: 400px !important;
+    background: url("/images/BackgroundTexture2.png") repeat fixed;
+}
+
+.signs-line {
+    background-size: 900px !important;
+    background: url("/images/SignsLine.png") repeat-x bottom;
+    height: 100px;
+}
+
 @media (max-width: 1240px) {
     .logo{
         margin: 0 auto !important;
@@ -23,7 +35,7 @@ body {
         margin: 0 50px 0 0 !important;
     }
 
-    .blue-line-right-info {
+    .main-info-line-right-info {
         display: none;
     }
 }
@@ -81,7 +93,7 @@ body {
 }
 
 .logo{
-    background: url("../../images/Logo.png") no-repeat;
+    background: url("/images/Logo.png") no-repeat;
     background-size: 100%;
 
     float: left;
@@ -137,7 +149,8 @@ body {
 }
 
 .selected {
-    border-bottom: solid 2px #4A6491 !important;
+    /*border-bottom: solid 2px #4A6491 !important;*/
+    border-bottom: solid 3px #F76C1C !important;
 }
 
 .dropdown-menu{
@@ -182,7 +195,7 @@ h1{
 h2 {
     font-size: 35px;
     font-weight: normal;
-    margin: 100px 0 0 0;
+    margin: 60px 0 0 0;
 }
 
 a {
@@ -214,34 +227,38 @@ a {
     font-size: 18px;
 }
 
-.blue-line{
+.main-info-line{
     padding: 20px 0;
 
     width: 100%;
 
-    background: linear-gradient(90.73deg, #4A6491 0.07%, #3887bf 99.92%);
+    /*background: linear-gradient(180deg, #F76C1C 0.07%, #d65d18 99.92%);*/
+    /*background: linear-gradient(90.73deg, #4A6491 0.07%, #3887bf 99.92%);*/
+    border-top: solid 2px #F76C1C;
+    /*border-bottom: solid 2px #F76C1C;*/
     background-size: 100%;
 }
 
-.blue-line-title {
+.main-info-line-title {
     margin: 0;
     font-size: 36px;
-    font-weight: 300;
-    color: #FFFFFF;
+    font-weight: 400;
+    /*color: #FFFFFF;*/
+    color: #4a4d53;
     text-align: left !important;
 }
 
-.blue-line-subtitle{
+.main-info-line-subtitle{
     font-size: 24px;
-    font-weight: 300;
-    color: #FFFFFF;
+    /*font-weight: 300;*/
+    /*color: #FFFFFF;*/
     display: block;
 }
 
-.blue-line-right-info {
+.main-info-line-right-info {
     font-size: 24px;
-    font-weight: 300;
-    color: #FFFFFF;
+    /*font-weight: 300;*/
+    /*color: #FFFFFF;*/
     float: right;
 }
 
@@ -257,7 +274,7 @@ a {
 
 .form-send-to-email{
     padding: 10px 0;
-    background: #D0E4F2;
+    background: rgb(255, 223, 204);
 }
 
 .input_green {
@@ -290,7 +307,8 @@ a {
 }
 
 .button {
-    background: #4A6491;
+    /*background: #4A6491;*/
+    background: #F76C1C;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 259px;
@@ -305,7 +323,8 @@ a {
 
 .information {
     font-size: 24px;;
-    color: #566E98;
+    /*color: #566E98;*/
+    color: #F76C1C;
     text-decoration: underline;
 }
 
