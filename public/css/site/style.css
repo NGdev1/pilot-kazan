@@ -274,7 +274,9 @@ a {
 
 .form-send-to-email{
     padding: 10px 0;
-    background: rgb(255, 223, 204);
+    /* Фиксируем фон веб-страницы */
+    background-size: 400px !important;
+    background: url("/images/BackgroundTexture2.png") repeat fixed;
 }
 
 .input_green {
