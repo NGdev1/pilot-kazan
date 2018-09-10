@@ -43,6 +43,7 @@ function loadContent(url, title, addToHistory) {
             type: "GET"
         }).done(function (data) {
             document.title = title;
+            mobileVersionTitle.html(title);
 
             loadingIndicator.hide();
 

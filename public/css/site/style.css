@@ -10,13 +10,13 @@ body {
 .mozaik-background {
     /* Фиксируем фон веб-страницы */
     background-size: 400px !important;
-    background: url("/images/BackgroundTexture2.png") repeat fixed;
+    background: url("/images/BackgroundTexture1.png") repeat fixed;
 }
 
 .signs-line {
-    background-size: 900px !important;
+    background-size: 750px !important;
     background: url("/images/SignsLine.png") repeat-x bottom;
-    height: 100px;
+    height: 80px;
 }
 
 @media (max-width: 1240px) {
@@ -93,7 +93,7 @@ body {
 }
 
 .logo{
-    background: url("/images/Logo.png") no-repeat;
+    background: url("/images/Logo15.png") no-repeat;
     background-size: 100%;
 
     float: left;
@@ -149,8 +149,8 @@ body {
 }
 
 .selected {
-    /*border-bottom: solid 2px #4A6491 !important;*/
-    border-bottom: solid 3px #F76C1C !important;
+    border-bottom: solid 2px #4A6491 !important;
+    /*border-bottom: solid 3px #F76C1C !important;*/
 }
 
 .dropdown-menu{
@@ -188,14 +188,14 @@ body {
 h1{
     font-size: 35px;
     font-weight: bold;
-    margin: 60px auto;
+    margin: 40px auto;
     text-align: center;
 }
 
 h2 {
     font-size: 35px;
     font-weight: normal;
-    margin: 60px 0 0 0;
+    margin: 40px 0 0 0;
 }
 
 a {
@@ -215,10 +215,10 @@ a {
 }
 
 .info-box .title {
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 400;
     color: #293b47;
-    margin-top: 35px;
+    margin-top: 23px;
     margin-bottom: 0;
 }
 
@@ -228,15 +228,23 @@ a {
 }
 
 .main-info-line{
-    padding: 20px 0;
+    padding: 15px 0;
 
     width: 100%;
 
     /*background: linear-gradient(180deg, #F76C1C 0.07%, #d65d18 99.92%);*/
     /*background: linear-gradient(90.73deg, #4A6491 0.07%, #3887bf 99.92%);*/
-    border-top: solid 2px #F76C1C;
     /*border-bottom: solid 2px #F76C1C;*/
     background-size: 100%;
+}
+
+.main-info-line:after {
+    content: ""; /* This is necessary for the pseudo element to work. */
+    display: block; /* This will put the pseudo element on its own line. */
+    /*float: right;*/
+    width: 100%; /* Change this to whatever width you want. */
+    padding-top: 24px; /* This creates some space between the element and the border. */
+    border-bottom: 2px solid #4A6491; /* This creates the border. Replace black with whatever color you want. */
 }
 
 .main-info-line-title {
@@ -276,7 +284,7 @@ a {
     padding: 10px 0;
     /* Фиксируем фон веб-страницы */
     background-size: 400px !important;
-    background: url("/images/BackgroundTexture2.png") repeat fixed;
+    background: url("/images/BackgroundTexture1.png") repeat fixed;
 }
 
 .input_green {
@@ -309,8 +317,8 @@ a {
 }
 
 .button {
-    /*background: #4A6491;*/
-    background: #F76C1C;
+    background: #4A6491;
+    /*background: #F76C1C;*/
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 259px;
@@ -325,8 +333,8 @@ a {
 
 .information {
     font-size: 24px;;
-    /*color: #566E98;*/
-    color: #F76C1C;
+    color: #566E98;
+    /*color: #F76C1C;*/
     text-decoration: underline;
 }
 

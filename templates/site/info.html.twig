@@ -1,22 +1,41 @@
 <div class="content">
-    <div class="title">INFO</div>
-    <p class="information">
-        Основные сведения
-    <br>
-        Структура и органы управления
-        <br>
-        Лицензия
-        <br>
-        Устав
-        <br>
-        Заключение ГИБДД
-        <br>
-        Методические указания по организации образовательного процесса
-        <br>
-        Правила внутреннего распорядка обучающихся
-        <br>
-        Правила внутреннего распорядка сотрудников
-        <br>
-        Свидетельство
-    </p>
+    <h2>Сведения:</h2>
+
+    {% for file in files %}
+
+        {% if file.isFile == false %}
+
+            <div class="directory">
+                {{ file.getRelativePathname }}
+            </div>
+
+        {% else %}
+
+            <a class="document" href="/Пилот документы/{{ file.getRelativePathname }}">{{ file.getRelativePathname }}</a>
+
+        {% endif %}
+
+
+    {% endfor %}
+
 </div>
+
+<div style="margin: 20px;" class="clearfix"></div>
+
+<style type="text/css">
+    .directory {
+        font-size: 23px;
+        font-weight: 400;
+        list-style: circle;
+        display: block;
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+
+    .document {
+        font-size: 20px;
+        display: block;
+        color: #4A6491;
+        text-decoration: none;
+    }
+</style>
